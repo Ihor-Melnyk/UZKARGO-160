@@ -47,6 +47,7 @@ function onSearchBranch(searchRequest) {
 function onCardInitialize() {
   DefinitionAgreeableTask();
   EnterResultsTask();
+  RegisterActTask();
 }
 //Скрипт 2. Зміна властивостей атрибутів та автоматичне визначення email ініціатора
 function DefinitionAgreeableTask() {
@@ -264,7 +265,7 @@ function setDataForESIGN() {
     DocName: name,
     extSysDocId: CurrentDocument.id,
     ExtSysDocVersion: CurrentDocument.version,
-    docType: "invoice",
+    docType: "Act",
     docDate: registrationDate,
     docNum: registrationNumber,
     File: "",
@@ -277,7 +278,7 @@ function setDataForESIGN() {
         signatures: [],
       },
       {
-        taskType: "ToSign",
+        taskType: "ToRead",
         taskState: "NotAssigned",
         legalEntityCode: EdocsApi.getAttributeValue("ContractorCode").value,
         contactPersonEmail:
