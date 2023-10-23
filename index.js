@@ -52,9 +52,7 @@ function onCardInitialize() {
 //Скрипт 2. Зміна властивостей атрибутів та автоматичне визначення email ініціатора
 function DefinitionAgreeableTask() {
   debugger;
-  var stateTask = EdocsApi.getCaseTaskDataByCode(
-    "DefinitionAgreeable" + EdocsApi.getAttributeValue("Sections").value
-  )?.state;
+  var stateTask = EdocsApi.getCaseTaskDataByCode("DefinitionAgreeable").state;
 
   switch (stateTask) {
     case "assigned" || "inProgress" || "delegated":
@@ -127,9 +125,7 @@ function onTaskExecuteDefinitionAgreeable(routeStage) {
 //Скрипт 3. Зміна властивостей атрибутів
 function EnterResultsTask() {
   debugger;
-  var stateTask = EdocsApi.getCaseTaskDataByCode(
-    "EnterResults" + EdocsApi.getAttributeValue("Sections").value
-  )?.state;
+  var stateTask = EdocsApi.getCaseTaskDataByCode("EnterResults").state;
 
   switch (stateTask) {
     case "assigned" || "inProgress" || "delegated":
@@ -173,9 +169,7 @@ function onTaskExecuteEnterResults(routeStage) {
 //Скрипт 4. Зміна властивостей атрибутів
 function RegisterActTask() {
   debugger;
-  var stateTask = EdocsApi.getCaseTaskDataByCode(
-    "RegisterAct" + EdocsApi.getAttributeValue("Sections").value
-  )?.state;
+  var stateTask = EdocsApi.getCaseTaskDataByCode("RegisterAct").state;
 
   switch (stateTask) {
     case "assigned" || "inProgress" || "delegated":

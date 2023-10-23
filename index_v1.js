@@ -56,57 +56,56 @@ function DefinitionAgreeableTask() {
     "DefinitionAgreeable" + EdocsApi.getAttributeValue("Sections").value
   )?.state;
 
-  switch (stateTask) {
-    case "assigned" || "inProgress" || "delegated":
-      setPropertyRequired("SubjectAct");
-      setPropertyRequired("Agreeable");
-      setPropertyRequired("OrgRPEmail");
-      setPropertyRequired("ContractorRPEmail");
-      setPropertyHidden("SubjectAct", false);
-      setPropertyHidden("Agreeable", false);
-      setPropertyHidden("OrgRPEmail", false);
-      setPropertyHidden("ContractorRPEmail", false);
-      setPropertyDisabled("SubjectAct", false);
-      setPropertyDisabled("Agreeable", false);
-      setPropertyDisabled("OrgRPEmail", false);
-      setPropertyDisabled("ContractorRPEmail", false);
+  if (
+    stateTask == "assigned" ||
+    stateTask == "inProgress" ||
+    stateTask == "delegated"
+  ) {
+    setPropertyRequired("SubjectAct");
+    setPropertyRequired("Agreeable");
+    setPropertyRequired("OrgRPEmail");
+    setPropertyRequired("ContractorRPEmail");
+    setPropertyHidden("SubjectAct", false);
+    setPropertyHidden("Agreeable", false);
+    setPropertyHidden("OrgRPEmail", false);
+    setPropertyHidden("ContractorRPEmail", false);
+    setPropertyDisabled("SubjectAct", false);
+    setPropertyDisabled("Agreeable", false);
+    setPropertyDisabled("OrgRPEmail", false);
+    setPropertyDisabled("ContractorRPEmail", false);
 
-      EdocsApi.setAttributeValue({
-        code: "OrgRPEmail",
-        value: EdocsApi.getEmployeeDataByEmployeeID(CurrentDocument.initiatorId)
-          .email,
-        text: null,
-      });
-      break;
-
-    case "completed":
-      setPropertyRequired("SubjectAct");
-      setPropertyRequired("Agreeable");
-      setPropertyRequired("OrgRPEmail");
-      setPropertyRequired("ContractorRPEmail");
-      setPropertyHidden("SubjectAct", false);
-      setPropertyHidden("Agreeable", false);
-      setPropertyHidden("OrgRPEmail", false);
-      setPropertyHidden("ContractorRPEmail", false);
-      setPropertyDisabled("SubjectAct");
-      setPropertyDisabled("Agreeable");
-      setPropertyDisabled("OrgRPEmail");
-      setPropertyDisabled("ContractorRPEmail");
-
-    default:
-      setPropertyRequired("SubjectAct", false);
-      setPropertyRequired("Agreeable", false);
-      setPropertyRequired("OrgRPEmail", false);
-      setPropertyRequired("ContractorRPEmail", false);
-      setPropertyHidden("SubjectAct");
-      setPropertyHidden("Agreeable");
-      setPropertyHidden("OrgRPEmail");
-      setPropertyHidden("ContractorRPEmail");
-      setPropertyDisabled("SubjectAct", false);
-      setPropertyDisabled("Agreeable", false);
-      setPropertyDisabled("OrgRPEmail", false);
-      setPropertyDisabled("ContractorRPEmail", false);
-      break;
+    EdocsApi.setAttributeValue({
+      code: "OrgRPEmail",
+      value: EdocsApi.getEmployeeDataByEmployeeID(CurrentDocument.initiatorId)
+        .email,
+      text: null,
+    });
+  } else if (stateTask == "completed") {
+    setPropertyRequired("SubjectAct");
+    setPropertyRequired("Agreeable");
+    setPropertyRequired("OrgRPEmail");
+    setPropertyRequired("ContractorRPEmail");
+    setPropertyHidden("SubjectAct", false);
+    setPropertyHidden("Agreeable", false);
+    setPropertyHidden("OrgRPEmail", false);
+    setPropertyHidden("ContractorRPEmail", false);
+    setPropertyDisabled("SubjectAct");
+    setPropertyDisabled("Agreeable");
+    setPropertyDisabled("OrgRPEmail");
+    setPropertyDisabled("ContractorRPEmail");
+  } else {
+    setPropertyRequired("SubjectAct", false);
+    setPropertyRequired("Agreeable", false);
+    setPropertyRequired("OrgRPEmail", false);
+    setPropertyRequired("ContractorRPEmail", false);
+    setPropertyHidden("SubjectAct");
+    setPropertyHidden("Agreeable");
+    setPropertyHidden("OrgRPEmail");
+    setPropertyHidden("ContractorRPEmail");
+    setPropertyDisabled("SubjectAct", false);
+    setPropertyDisabled("Agreeable", false);
+    setPropertyDisabled("OrgRPEmail", false);
+    setPropertyDisabled("ContractorRPEmail", false);
   }
 }
 
@@ -131,32 +130,31 @@ function EnterResultsTask() {
     "EnterResults" + EdocsApi.getAttributeValue("Sections").value
   )?.state;
 
-  switch (stateTask) {
-    case "assigned" || "inProgress" || "delegated":
-      setPropertyRequired("ActMeetingResult");
-      setPropertyRequired("Number");
-      setPropertyHidden("ActMeetingResult", false);
-      setPropertyHidden("Number", false);
-      setPropertyDisabled("ActMeetingResult", false);
-      setPropertyDisabled("Number", false);
-      break;
-
-    case "completed":
-      setPropertyRequired("ActMeetingResult");
-      setPropertyRequired("Number");
-      setPropertyHidden("ActMeetingResult", false);
-      setPropertyHidden("Number", false);
-      setPropertyDisabled("ActMeetingResult");
-      setPropertyDisabled("Number");
-
-    default:
-      setPropertyRequired("ActMeetingResult", false);
-      setPropertyRequired("Number", false);
-      setPropertyHidden("ActMeetingResult");
-      setPropertyHidden("Number");
-      setPropertyDisabled("ActMeetingResult", false);
-      setPropertyDisabled("Number", false);
-      break;
+  if (
+    stateTask == "assigned" ||
+    stateTask == "inProgress" ||
+    stateTask == "delegated"
+  ) {
+    setPropertyRequired("ActMeetingResult");
+    setPropertyRequired("Number");
+    setPropertyHidden("ActMeetingResult", false);
+    setPropertyHidden("Number", false);
+    setPropertyDisabled("ActMeetingResult", false);
+    setPropertyDisabled("Number", false);
+  } else if (stateTask == "completed") {
+    setPropertyRequired("ActMeetingResult");
+    setPropertyRequired("Number");
+    setPropertyHidden("ActMeetingResult", false);
+    setPropertyHidden("Number", false);
+    setPropertyDisabled("ActMeetingResult");
+    setPropertyDisabled("Number");
+  } else {
+    setPropertyRequired("ActMeetingResult", false);
+    setPropertyRequired("Number", false);
+    setPropertyHidden("ActMeetingResult");
+    setPropertyHidden("Number");
+    setPropertyDisabled("ActMeetingResult", false);
+    setPropertyDisabled("Number", false);
   }
 }
 
@@ -177,41 +175,39 @@ function RegisterActTask() {
     "RegisterAct" + EdocsApi.getAttributeValue("Sections").value
   )?.state;
 
-  switch (stateTask) {
-    case "assigned" || "inProgress" || "delegated":
-      setPropertyRequired("RegDate");
-      setPropertyRequired("RegNumber");
-      setPropertyRequired("Registraion");
-      setPropertyHidden("RegDate", false);
-      setPropertyHidden("RegNumber", false);
-      setPropertyHidden("Registraion", false);
-      setPropertyDisabled("RegDate", false);
-      setPropertyDisabled("RegNumber", false);
-      setPropertyDisabled("Registraion", false);
-      break;
-
-    case "completed":
-      setPropertyRequired("RegDate");
-      setPropertyRequired("RegNumber");
-      setPropertyRequired("Registraion");
-      setPropertyHidden("RegDate", false);
-      setPropertyHidden("RegNumber", false);
-      setPropertyHidden("Registraion", false);
-      setPropertyDisabled("RegDate");
-      setPropertyDisabled("RegNumber");
-      setPropertyDisabled("Registraion");
-
-    default:
-      setPropertyRequired("RegDate", false);
-      setPropertyRequired("RegNumber", false);
-      setPropertyRequired("Registraion", false);
-      setPropertyHidden("RegDate");
-      setPropertyHidden("RegNumber");
-      setPropertyHidden("Registraion");
-      setPropertyDisabled("RegDate", false);
-      setPropertyDisabled("RegNumber", false);
-      setPropertyDisabled("Registraion", false);
-      break;
+  if (
+    stateTask == "assigned" ||
+    stateTask == "inProgress" ||
+    stateTask == "delegated"
+  ) {
+    setPropertyRequired("RegDate");
+    setPropertyRequired("RegNumber");
+    setPropertyRequired("Registraion");
+    setPropertyHidden("RegDate", false);
+    setPropertyHidden("RegNumber", false);
+    setPropertyHidden("Registraion", false);
+    setPropertyDisabled("RegDate", false);
+    setPropertyDisabled("RegNumber", false);
+    setPropertyDisabled("Registraion", false);
+  } else if (stateTask == "completed") {
+    setPropertyRequired("RegDate");
+    setPropertyRequired("RegNumber");
+    setPropertyRequired("Registraion");
+    setPropertyHidden("RegDate", false);
+    setPropertyHidden("RegNumber", false);
+    setPropertyHidden("Registraion", false);
+    setPropertyDisabled("RegDate");
+    setPropertyDisabled("RegNumber");
+    setPropertyDisabled("Registraion");
+  } else {
+    setPropertyRequired("RegDate", false);
+    setPropertyRequired("RegNumber", false);
+    setPropertyRequired("Registraion", false);
+    setPropertyHidden("RegDate");
+    setPropertyHidden("RegNumber");
+    setPropertyHidden("Registraion");
+    setPropertyDisabled("RegDate", false);
+    setPropertyDisabled("RegNumber", false);
   }
 }
 
@@ -242,6 +238,10 @@ function setSections() {
 }
 
 function onChangeBranch() {
+  setSections();
+}
+
+function onBeforeCardSave() {
   setSections();
 }
 
